@@ -1,0 +1,67 @@
+html, body {
+    background-color: #fff;
+    height: 100vh;
+    margin: 0;
+}
+
+.titulos{
+    color: #636b6f;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+.ContenedorTabla{
+    min-width: 10%;
+    max-width: 30%;
+    max-height: 50%;
+    overflow: auto;
+}
+
+.ContenedorCrud{
+
+    padding-top: 2.5em;
+}
+
+.tabla {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+    min-width: 50%;
+    width: 100%;
+    border-collapse: collapse;
+    padding:10px;
+}
+
+.tabla th {
+    font-size: 16px;
+    background-color: #83aec0;
+    color: #FFFFFF;
+    font-family: 'Josefin Sans', sans-serif;
+    border-width: 0.1px 1px 1px 0.1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-right-color: #558FA6;
+    border-bottom-color: #558FA6;
+    text-transform: uppercase;
+}
+
+.tabla td{
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid  #A4C4D0;
+}
+tr:hover{background-color:#f5f5f5}
+
+.crud{
+    padding:5px 10px;
+    background-color: rgba(255, 255, 221, 0.5);
+    text-decoration: none;
+    color: #5e5e5e;
+    height: 25px;
+    margin: 10px;
+
+}
+.crud:hover{
+    background-color: rgba(255, 255, 221, 0.7);
+    color: #2e3436;
+}
