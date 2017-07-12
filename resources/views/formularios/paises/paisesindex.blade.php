@@ -37,7 +37,7 @@
               @include('formularios.paises.paisesformpartials')
 
               <button class="crud" type="submit">Insertar</button>
-          </form>
+          </form
 
 
   <div class="ContenedorCrud">
@@ -47,8 +47,4 @@
 
   </div>
 
-
-
 @endsection
-
-

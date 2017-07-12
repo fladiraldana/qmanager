@@ -1,21 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\storedepart;
 use App\Departamentos;
-use Illuminate\Http\Request;
+use App\Paises;
+use Illuminate\Contracts\View\Factory;
 
 class DepartamentosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $departamento =  Departamentos::all();
+    public function index(){
 
-        return view('formularios.departamentos',compact('departamento'));
+
+        $departamento =  Departamentos::all();
+        $pais         =  Paises::all();
+
+        return view('formularios.departamentos.departindex',compact('departamento', 'pais'));
     }
 
     /**
@@ -25,7 +24,7 @@ class DepartamentosController extends Controller
      */
     public function create()
     {
-        //
+        return view('formularios.paises.paisescrear');
     }
 
     /**
@@ -34,9 +33,15 @@ class DepartamentosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storedepart $request)
     {
-        //
+          $departamento = new departamentos;
+          $departamento -> codedepart = $request -> get('codigo');
+          $departamento -> nomdepart  = $request -> get('descripcion');
+          $departamento -> pais_id    = $request -> get('lista');
+          $departamento -> save();
+
+          return redirect()->route('departamentos.index');
     }
 
     /**

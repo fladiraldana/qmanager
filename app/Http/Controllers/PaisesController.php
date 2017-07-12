@@ -14,7 +14,6 @@ class PaisesController extends Controller
 
         $pais =  Paises::all();
 
-
         return view('formularios.paises.paisesindex', compact('pais'));
     }
 
@@ -32,8 +31,6 @@ class PaisesController extends Controller
      */
     public function store(storepais $request)
     {
-        //return 'Aqui se procesan los datos del formulario y se re dirige a otra pagina para evitar reenvios de informacion';
-
             $pais = new paises;
             $pais -> codpais = $request -> get('codigo');
             $pais -> nompais = $request -> get('descripcion');

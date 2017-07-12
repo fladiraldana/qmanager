@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Request\storeempestado;
+use App\empestados;
+use Illuminate\Contracts\View\Factory;
 
-use Illuminate\Http\Request;
 
-class EstadoEmpController extends Controller
+class EmpEstadosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+
+        $empestado = empestados::all();
+
+
+          return view('formularios.estadoemp.empestadoindex', compact('empestado'));
+        //view('formularios.estadoemp.empestadoindex', compact('empestado'))
     }
 
     /**
@@ -32,9 +34,13 @@ class EstadoEmpController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeempestado $request)
     {
-        //
+        $empestado = new empestados;
+        $empestado -> estado = $request -> get('descripcion');
+        $empestado -> save();
+
+          return redirect()->route('empestado.index');
     }
 
     /**

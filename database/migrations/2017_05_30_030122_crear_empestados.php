@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearEstadoscliente extends Migration
+class CrearEmpestados extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CrearEstadoscliente extends Migration
      */
     public function up()
     {
-        Schema::create('estadoscliente', function (Blueprint $table) {
+        Schema::create('empestados', function (Blueprint $table) {
             $table->increments('id');
             $table->string('estado',100);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CrearEstadoscliente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estadoscliente');
+        Schema::dropIfExists('estadoemp');
     }
 }

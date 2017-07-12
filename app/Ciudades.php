@@ -10,4 +10,14 @@ class Ciudades extends Model
 
     protected $Table = 'ciudades';
 
+    public function departamento(){
+
+      return $this -> belongsto('App\Departamentos');
+
+    }
+
+    public function succlientes(){
+
+        return $this -> hasMany('SucClientes');
+    }
 }

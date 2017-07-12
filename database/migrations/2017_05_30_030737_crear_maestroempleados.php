@@ -19,13 +19,13 @@ class CrearMaestroempleados extends Migration
             $table->dateTime('fechanacimiento');
 
             $table->integer('estadoemp_id')->unsigned();
-            $table->foreign('estadoemp_id')->references('id')->on('estadoemp');
+            $table->foreign('estadoemp_id')->references('id')->on('empestados');
 
             $table->integer('cargo_id')->unsigned();
             $table->foreign('cargo_id')->references('id')->on('cargos');
 
             $table->integer('modalidademp_id')->unsigned();
-            $table->foreign('modalidademp_id')->references('id')->on('modalidadesemp');
+            $table->foreign('modalidademp_id')->references('id')->on('empmodalidades');
 
             $table->integer('succliente_id')->unsigned();
             $table->foreign('succliente_id')->references('id')->on('succlientes');

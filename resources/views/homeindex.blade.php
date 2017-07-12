@@ -14,8 +14,8 @@
                 <ul class="subs">
                     <li><a href="{{url('paises')}}">Paises</a></li>
                     <li><a href="{{url('departamentos')}}">Departamentos </a></li>
-                    <li><a href="#">Ciudades</a></li>
-                    <li><a href="#">Estado Emmpleado</a></li>
+                    <li><a href="{{url('ciudades')}}">Ciudades</a></li>
+                    <li><a href="{{url('empestados')}}">Estado Empleado</a></li>
                     <li><a href="#">Estado Cliente</a></li>
                     <li><a href="#">Cargos</a></li>
                 </ul>

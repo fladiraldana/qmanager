@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cargos extends Model
 {
     protected $table = 'cargos';
+
+    public function empleados(){
+
+        return $this -> hasMany('MaestroEmpleados');
+    }
 }

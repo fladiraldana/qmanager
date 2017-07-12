@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearModalidadesemp extends Migration
+class CrearEmpModalidades extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CrearModalidadesemp extends Migration
      */
     public function up()
     {
-        Schema::create('modalidadesemp', function (Blueprint $table) {
+        Schema::create('empmodalidades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nommodalidad',100);
             $table->timestamps();

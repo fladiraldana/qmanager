@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\storeciudad;
+use Illuminate\Contracts\View\Factory;
+use App\Ciudades;
+use App\Departamentos;
 
 class CiudadesController extends Controller
 {
@@ -13,7 +15,10 @@ class CiudadesController extends Controller
      */
     public function index()
     {
-        //
+        $ciudad = Ciudades::all();
+        $departamento = Departamentos::all();
+
+        return view('formularios.ciudades.ciudadesindex', compact('ciudad', 'departamento'));
     }
 
     /**
@@ -23,7 +28,7 @@ class CiudadesController extends Controller
      */
     public function create()
     {
-        //
+        return view('formularios.paises.paisescrear');
     }
 
     /**
@@ -32,10 +37,15 @@ class CiudadesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeciudad $request)
     {
-        //
-    }
+        $ciudad = new ciudades;
+        $ciudad -> codciudad = $request -> get('codigo');
+        $ciudad -> nameciudad = $request -> get('descripcion');
+        $ciudad -> departamento_id = $request -> get('lista');
+        $ciudad -> save();
+
+        return redirect()->route('ciudades.index');    }
 
     /**
      * Display the specified resource.

@@ -20,7 +20,7 @@ class CrearMaestroclientes extends Migration
             $table->string('razonsocial',250);
 
             $table->integer('estadocliente_id')->unsigned();
-            $table->foreign('estadocliente_id')->references('id')->on('estadoscliente');
+            $table->foreign('estadocliente_id')->references('id')->on('estadosclientes');
 
             $table->dateTime('fecingreso');
             $table->dateTime('fecsalida');

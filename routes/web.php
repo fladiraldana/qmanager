@@ -56,7 +56,7 @@ Route::resource('ciudades', 'CiudadesController');
 Route::resource('contactoemp', 'ContactoEmpController');
 Route::resource('erroresrecurrentes', 'ErroresRecurrentesController');
 Route::resource('estadocliente', 'EstadoClienteController');
-Route::resource('estadoemp', 'EstadoEmpController');
+Route::resource('empestados', 'EmpEstadosController');
 Route::resource('maestroclientes', 'MaestroClientesController');
 Route::resource('maestroempleados', 'MaestroEmpleadosController');
 Route::resource('modalidadesemp', 'ModalidadesEmpController');

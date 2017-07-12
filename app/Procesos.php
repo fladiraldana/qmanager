@@ -7,4 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Procesos extends Model
 {
     protected $table = 'procesos';
+
+    public function revisionpross(){
+
+        return $this-> hasMany('App\RevisionPross');
+    }
+
 }
