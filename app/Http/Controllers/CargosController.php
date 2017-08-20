@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\storecargo;
+use App\Cargos;
+use Illuminate\Contracts\View\Factory;
 
 class CargosController extends Controller
 {
+
+    //public function __construct() { $this->middleware('auth');}
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +16,12 @@ class CargosController extends Controller
      */
     public function index()
     {
-        //
+        $cargo = Cargos::all();
+
+        Return view('formularios.Cargos.cargosindex', compact('cargo'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,9 +39,12 @@ class CargosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storecargo $request)
     {
-        //
+        $cargo = new Cargos;
+        $cargo -> nomcargo -> $request -> get('nombre');
+        $cargo -> codinterno -> $request -> get('codinterno');
+        $cargo -> save();
     }
 
     /**

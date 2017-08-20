@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+Use App\Http\Requests\storecontactoemp;
+Use App\ContactoEmp;
+use Illuminate\Contracts\View\Factory;
 
-use Illuminate\Http\Request;
+
 
 class ContactoEmpController extends Controller
 {
@@ -13,7 +16,9 @@ class ContactoEmpController extends Controller
      */
     public function index()
     {
-        //
+        $contactoe = ContactoEmp :: all();
+
+        Return view('formularios.Contactosemp.contactosindex', compact('contactoe'));
     }
 
     /**
@@ -32,9 +37,15 @@ class ContactoEmpController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storecontactoemp $request)
     {
-        //
+        $contactoe = new ContactoEmp;
+        $contactoe -> empleado_id  = $request -> get('empleado');
+        $contactoe -> email = $request -> get('email');
+        $contactoe -> telefono = $request -> get('telefono');
+        $contactoe -> estencion = $request -> get('extencion');
+        $contactoe -> movil = $request -> get('Movil');
+        $contactoe -> save();
     }
 
     /**

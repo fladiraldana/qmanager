@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
-Route::get('Home','HomeController@index')->name('Home.index');
+
 
 /*
 Route::get('paises', 'PaisesController@index')->name('paises.index');
@@ -48,19 +48,38 @@ Route::Group(['prefix' => 'paises'], function()
  * Rutas recursivas para disminuir el trabajo en laravel, no habria que hacer todo lo anterior.
  */
 
-Route::resource('paises', 'PaisesController');
-Route::resource('departamentos', 'DepartamentosController');
-Route::resource('bases', 'BasesController');
-Route::resource('cargos', 'CargosController');
-Route::resource('ciudades', 'CiudadesController');
-Route::resource('contactoemp', 'ContactoEmpController');
-Route::resource('erroresrecurrentes', 'ErroresRecurrentesController');
-Route::resource('estadocliente', 'EstadoClienteController');
-Route::resource('empestados', 'EmpEstadosController');
-Route::resource('maestroclientes', 'MaestroClientesController');
-Route::resource('maestroempleados', 'MaestroEmpleadosController');
-Route::resource('modalidadesemp', 'ModalidadesEmpController');
-Route::resource('procesos', 'ProcesosController');
-Route::resource('revisionpross', 'RevisionProssController');
-Route::resource('succlientes', 'SucClientesController');
-Route::resource('users', 'UserController');
+Route::group(['middleware' => 'auth'], function(){
+
+  Route::resource('paises', 'PaisesController');
+  Route::post('/masivo_paises', 'PaisesController@masivo_paises')->name('paises.masivo_paises');
+
+  Route::resource('departamentos', 'DepartamentosController');
+  Route::post('/masivo_departamentos', 'DepartamentosController@masivo_departamentos')->name('departamentos.masivo_departamentos');
+
+  Route::resource('ciudades', 'CiudadesController');
+  Route::post('/masivo_ciudades', 'CiudadesController@masivo_ciudades')->name('ciudades.masivo_ciudades');
+
+
+  Route::resource('bases', 'BasesController');
+  Route::resource('cargos', 'CargosController');
+  Route::resource('contactoemp', 'ContactoEmpController');
+  Route::resource('erroresrecurrentes', 'ErroresRecurrentesController');
+  Route::resource('estadocliente', 'EstadoClienteController');
+  Route::resource('empestados', 'EmpEstadosController');
+  Route::resource('maestroclientes', 'MaestroClientesController');
+  Route::resource('maestroempleados', 'MaestroEmpleadosController');
+  Route::resource('modalidadesemp', 'ModalidadesEmpController');
+  Route::resource('procesos', 'ProcesosController');
+  Route::resource('revisionpross', 'RevisionProssController');
+  Route::resource('succlientes', 'SucClientesController');
+  Route::resource('users', 'UserController');
+
+
+
+  //Route::post('/', 'DepartamentosController@masivo_departamentos')->name('departamentos.masivo_departamentos');
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

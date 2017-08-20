@@ -13,4 +13,10 @@ class Procesos extends Model
         return $this-> hasMany('App\RevisionPross');
     }
 
+    public function erroresrecurrentes(){
+
+        return $this -> hasMany('App\ErroresRecurrentes');
+
+    }
+
 }

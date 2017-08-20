@@ -5,6 +5,8 @@ use App\Http\Requests\storepais;
 use App\Paises;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Storage;
+use Excel;
 
 
 class PaisesController extends Controller
@@ -57,5 +59,32 @@ class PaisesController extends Controller
     public function destroy($codpais)
     {
        // return 'aqui va la logica para eliminar una categoria segun el codigo del pais';
+    }
+
+    public function masivo_paises(Request $request){
+
+      $archivo = $request->file('archivo');
+      $nombre_original = $archivo->getClientOriginalName();
+      $extencion      = $archivo->getClientOriginalExtension();
+      $rl = storage::disk('archivos')->put($nombre_original, \File::get($archivo));
+      $ruta = storage_path('archivos')."/". $nombre_original;
+
+      if ($rl){
+
+        Excel::selectSheetsByIndex(0)->load($ruta, function($hoja){
+          $hoja->each(function($fila){
+
+            $pais = new paises;
+            $pais -> codpais = $fila ->codigo;
+            $pais -> nompais = $fila->nombre;
+            $pais -> save();
+
+          });
+        });
+      }
+
+      return redirect()->route('paises.index');
+
+
     }
 }

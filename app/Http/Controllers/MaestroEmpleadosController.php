@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Request\storemaestroempleado;
+use App\MaestroEmpleados;
+use Illuminate\Contracts\View\Factory;
 
-use Illuminate\Http\Request;
+
 
 class MaestroEmpleadosController extends Controller
 {
@@ -13,7 +16,9 @@ class MaestroEmpleadosController extends Controller
      */
     public function index()
     {
-        //
+        $maestroe = MaestroEmpleados::all();
+
+        return view('formularios.Maestroempleados.maestroempleadosindex', compact('maestroe'));
     }
 
     /**
@@ -32,9 +37,16 @@ class MaestroEmpleadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storemaestroempleado $request)
     {
-        //
+        $maestre = new MestroEmpleados;
+        $maestroe -> codemp = $request -> get('empleado');
+        $maestroe -> fechanacimiento = $request -> get('fecnac');
+        $maestroe -> estadoemp_id = $request -> get('estado');
+        $maestroe -> cargo_id = $request -> get('cargo');
+        $maestroe -> modalidademp_id = $request -> get('modalidad');
+        $maestroe -> succliente_id = $request -> get('sucursal');
+        $maestroe -> save();
     }
 
     /**

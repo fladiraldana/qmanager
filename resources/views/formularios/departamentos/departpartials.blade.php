@@ -1,8 +1,8 @@
 
 
 <div class="form-group {{ $errors->has('codigo') ? 'has-error' : ''}}">
-    <label for="codigo">Codigo</label>
-    <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo DIAN del departamento" value="{{old('codigo')}}">
+    <label class="forma-form__label" for="codigo">Codigo</label>
+    <input type="text" class="forma-form__input" name="codigo" id="codigo" placeholder="Codigo DIAN del departamento" value="{{old('codigo')}}" required>
 
         @if($errors->has('codigo'))
             <span class="help-block">
@@ -10,11 +10,12 @@
              </span>
         @endif
 </div>
+<!--___________________________________________________________________________________________-->
 
 <div class="form-group{{$errors->has('descripcion') ? 'has-error' : ''}}">
 
-    <label for="descripcion">Descripcion</label>
-    <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Nombre departamento" value="{{old('descripcion')}}">
+    <label class="forma-form__label" for="descripcion">Descripcion</label>
+    <input type="text" class="forma-form__input" name="descripcion" id="descripcion" placeholder="Nombre departamento" value="{{old('descripcion')}}" required>
 
         @if($errors->has('descripcion'))
             <span class="help-block">
@@ -23,11 +24,12 @@
         @endif
 
 </div>
+<!--___________________________________________________________________________________________-->
 
 <div class="form-group{{$errors->has('description') ? 'has-error' : ''}}">
 
-  <label for="lista">Pais:</label>
-  <select class="lista" name="lista" id="lista" required value="{{old('lista')}}">
+  <label class="forma-form__label" for="lista">Pais:</label>
+  <select class="forma-form__input" name="lista" id="lista"  value="{{old('lista')}}" required>
         <option Default="">Seleccione un pais</option>
         @foreach($pais as $paises)
             <option value = "{{$paises -> id}}"> {{$paises -> nompais}} </option>

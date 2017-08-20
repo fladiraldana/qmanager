@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\storeerroresrec;
+use App\ErroresRecurrentes;
+use Illuminate\Contracts\View\Factory;
+use App\Procesos;
 
-use Illuminate\Http\Request;
 
 class ErroresRecurrentesController extends Controller
 {
@@ -13,7 +16,10 @@ class ErroresRecurrentesController extends Controller
      */
     public function index()
     {
-        //
+        $errorrec = ErroresRecurrentes::all();
+        $proceso  = Procesos::all();
+
+        return view('formularios.Erroresrecurrentes.erroresrecurrentesindex', compact('errorrec', 'proceso'));
     }
 
     /**
@@ -32,9 +38,15 @@ class ErroresRecurrentesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeerroresrec $request)
     {
-        //
+        $errorrec = new ErroresRecurrentes;
+        $errorrec -> errorrecurrente  = $request -> get('errortip');
+        $errorrec -> proceso_id       = $request -> get('proceso');
+        $errorrec ->  save();
+
+        return redirect()->route('erroresrecurrentes.index');
+
     }
 
     /**

@@ -48,6 +48,12 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'archivos' => [
+
+          'driver' => 'local',
+          'root'   => storage_path('archivos'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -62,6 +68,7 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+
 
     ],
 

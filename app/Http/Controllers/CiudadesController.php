@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\storeciudad;
-use Illuminate\Contracts\View\Factory;
 use App\Ciudades;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\Request;
+use Storage;
+use Excel;
 use App\Departamentos;
 
 class CiudadesController extends Controller
@@ -91,4 +94,28 @@ class CiudadesController extends Controller
     {
         //
     }
+
+    public function masivo_ciudades(Request $request){
+
+      $archivo = $request->file('archivo');
+      $nombre_original = $archivo->getClientOriginalName();
+      $extencion = $archivo->getClientOriginalExtension();
+      $rl = storage::disk('archivos')->put($nombre_original, \File::get($archivo));
+      $ruta = storage_path('archivos')."/".$nombre_original;
+
+      if($rl){
+        Excel::selectSheetsByIndex(0)->load($ruta,function($hoja){
+          $hoja->each(function($fila){
+              $ciudad = new Ciudades;
+              $ciudad -> codciudad = $fila ->codigo;
+              $ciudad -> nameciudad = $fila ->ciudad;
+              $ciudad -> departamento_id = $fila ->departamento;
+              $ciudad -> save();
+          });
+        });
+    }
+
+    return redirect()->route('ciudades.index');
+  }
+
 }

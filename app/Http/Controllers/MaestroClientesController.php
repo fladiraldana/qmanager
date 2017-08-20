@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Request\storemaestroclientes;
+use App\MaestroClientes;
+use Illuminate\Contracts\View\Factory;
+
 
 class MaestroClientesController extends Controller
 {
@@ -13,7 +16,9 @@ class MaestroClientesController extends Controller
      */
     public function index()
     {
-        //
+        $maestroc = MaestroClientes::all();
+
+        return view('forularios.Maestroclientes.maestroclientesindex', compact('maestroc'));
     }
 
     /**
@@ -32,9 +37,16 @@ class MaestroClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storemaestroclientes $request)
     {
-        //
+        $maestroc = new MaestroClientes;
+        $maestroc -> nit = $request -> get('cliente');
+        $maestroc -> dv = $request -> get('dv');
+        $maestroc -> razonsocial = $request -> get('razonsoc');
+        $maestroc -> estadocliente_id = $request -> get('estado');
+        $maestroc -> fecingreso = $request -> get('fecing');
+        $maestroc -> fecsalida = $request -> get('fecsal');
+        $maestroc -> save();
     }
 
     /**

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\storeprocaudit;
+use App\Procesos;
+use Illuminate\contracts\View\Factory;
 
-use App\ProcesosController;
-use Illuminate\Http\Request;
+
 
 class ProcesosController extends Controller
 {
@@ -14,7 +16,9 @@ class ProcesosController extends Controller
      */
     public function index()
     {
-        //
+        $proceso = Procesos::all();
+
+        return view('formularios.Procesos.procesosindex', compact('proceso'));
     }
 
     /**
@@ -33,9 +37,13 @@ class ProcesosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeprocaudit $request)
     {
-        //
+        $proceso = new Procesos;
+        $proceso -> nomproceso = $request -> get('proceso');
+        $proceso -> save();
+
+        return redirect()->route('procesos.index');
     }
 
     /**

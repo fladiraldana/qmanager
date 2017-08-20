@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Request\storeempestado;
+use App\Http\Request\storeempestados;
 use App\empestados;
 use Illuminate\Contracts\View\Factory;
 

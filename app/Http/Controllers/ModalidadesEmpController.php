@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Request\storemodalidademp;
+use App\ModalidadesEmp;
+use Illuminate\Contracts\View\Factory;
 
-use Illuminate\Http\Request;
+
 
 class ModalidadesEmpController extends Controller
 {
@@ -13,8 +16,10 @@ class ModalidadesEmpController extends Controller
      */
     public function index()
     {
-        //
-    }
+          $modalidade = ModalidadesEmp::all();
+
+          return view('formularios.ModalidadesEmp.modalidadesempindex', compact('modalidade'));
+;    }
 
     /**
      * Show the form for creating a new resource.
@@ -32,9 +37,11 @@ class ModalidadesEmpController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storemodalidademp $request)
     {
-        //
+        $modalidade = new ModalidadesEmp;
+        $modalidade -> nommodalidad = $request -> get('modalidad');
+        $modalidade -> save();
     }
 
     /**

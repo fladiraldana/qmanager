@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\storedepart;
 use App\Departamentos;
-use App\Paises;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\Request;
+use Storage;
+use Excel;
+use App\Paises;
+
 
 class DepartamentosController extends Controller
 {
@@ -88,4 +92,35 @@ class DepartamentosController extends Controller
     {
         //
     }
+
+    public function masivo_departamentos(Request $request){
+
+      $archivo = $request->file('archivo');
+      $nombre_original = $archivo->getClientOriginalName();
+      $extencion      = $archivo->getClientOriginalExtension();
+      $rl = storage::disk('archivos')->put($nombre_original, \File::get($archivo));
+      $ruta = storage_path('archivos')."/". $nombre_original;
+
+      if ($rl){
+
+        Excel::selectSheetsByIndex(0)->load($ruta, function($hoja){
+          $hoja->each(function($fila){
+
+            $departamento = new departamentos;
+            $departamento -> codedepart = $fila ->codigo;
+            $departamento -> nomdepart  = $fila ->descripcion;
+            $departamento -> pais_id    = $fila ->pais;
+            $departamento -> save();
+
+          });
+        });
+      }
+
+      return redirect()->route('departamentos.index');
+
+
+    }
+
+
+
 }

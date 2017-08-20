@@ -2,11 +2,7 @@
 @extends('layouts.app')
 
 
-@section('title')
-    Departamentos
-@endsection
-
-@section('contend')
+@section('content')
   <h1 class="titulos">Maestro Departamentos</h1>
 
   <div class="ContenedorTabla">
@@ -31,13 +27,23 @@
   </div>
 
 
-  <form class="Formulario" action="{{route('departamentos.store')}}" method="post">
+  <form class="forma-form" action="{{route('departamentos.store')}}" method="post">
 
       {{csrf_field()}}
 
       @include('formularios.departamentos.departpartials')
 
-      <button class="crud" type="submit">Insertar</button>
+      <button class="forma-form__boton" type="submit">Insertar</button>
+
+  </form>
+
+  <form class="forma-form" action="{{route('departamentos.masivo_departamentos')}}" method=POST enctype=multipart/form-data>
+      {{csrf_field()}}
+      <label class="forma-form__label" for="archivo">Seleccione el archivo a cargar:</label>
+      <input  class="forma-form__boton" type="file" id="archivo" name="archivo" required>
+      <button type="submit" class="forma-form__boton">Enviar Archivo</button>
+  </form>
+
 
     <div class="ContenedorCrud">
 

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Request\storebase;
+use App\Bases;
+use Illiminate\Contracts\View\Factory;
 
-use Illuminate\Http\Request;
 
 class BasesController extends Controller
 {
@@ -13,7 +15,9 @@ class BasesController extends Controller
      */
     public function index()
     {
-        //
+        $base = Bases::all();
+
+        Return view('formularios.bases.basesindex', compact('base'));
     }
 
     /**
@@ -34,7 +38,11 @@ class BasesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $base = new bases;
+        $base -> nombase -> $request -> get('nombrebase');
+        $base -> maestroclientes_id -> $request -> get('cliente');
+        $base -> estadocliente_id -> $request -> get('estado');
+        $base -> save();
     }
 
     /**

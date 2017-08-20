@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Request\storeestadocliente;
+use App\EstadoCliente;
+use Illuminate\Contracts\View\Factory;
 
-use Illuminate\Http\Request;
+
 
 class EstadoClienteController extends Controller
 {
@@ -13,7 +16,9 @@ class EstadoClienteController extends Controller
      */
     public function index()
     {
-        //
+        $estadoc = EstadoCliente::all();
+
+        return view('formularios.Estadoscliente.estadosclienteindex', compact('estadoc'));
     }
 
     /**
@@ -32,9 +37,11 @@ class EstadoClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeestadocliente $request)
     {
-        //
+        $estadoc = new EstadoCliente;
+        $estadoc -> estado  = $request -> get('descripcion');
+        $estadoc -> save();
     }
 
     /**

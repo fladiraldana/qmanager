@@ -1,8 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Request\storerevisionproceso;
+use App\RevisionPross;
+use App\Procesos;
+use App\Bases;
+use Illuminate\contracts\View\Factory;
 
-use Illuminate\Http\Request;
+
 
 class RevisionProssController extends Controller
 {
@@ -13,7 +18,9 @@ class RevisionProssController extends Controller
      */
     public function index()
     {
-        //
+        $revisionp = RevisionPross::all();
+
+        return view('formularios.Revisionpross.revisionprossindex', compact('revisionp'));
     }
 
     /**
@@ -23,7 +30,10 @@ class RevisionProssController extends Controller
      */
     public function create()
     {
-        //
+        $proceso = Procesos::all();
+        $base    = Bases::all();
+
+        return view('formularios.Revisionpross.revisionprosspartials', compact('proceso','base'));
     }
 
     /**
@@ -32,9 +42,24 @@ class RevisionProssController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storerevisionproceso $request)
     {
-        //
+        $revisionp = new RevisionPross;
+        $revisionp -> base_id = $request -> get('base');
+        $revisionp -> cantemp = $request -> get('cantemp');
+        $revisionp -> analista_id = $request -> get('analista');
+        $revisionp -> feccorte = $request -> get('feccorte');
+        $revisionp -> fecrecep = $request -> get('fecrecep');
+        $revisionp -> fecvalid = $request -> get('fecvalid');
+        $revisionp -> fecentrega = $request -> get('fecentrega');
+        $revisionp -> proceso_id = $request -> get('proceso');
+        $revisionp -> ordenval = $request -> get('ordenrev');
+        $revisionp -> controller_id = $request -> get('controller');
+        $revisionp -> Observaciones = $request -> get('observacion');
+        $revisionp -> error = $request -> get('conterror');
+        $revisionp -> aprobacion = $request -> get('aprov');
+        $revisionp -> save();
+
     }
 
     /**
@@ -45,7 +70,7 @@ class RevisionProssController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

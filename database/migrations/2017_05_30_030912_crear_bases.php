@@ -21,7 +21,7 @@ class CrearBases extends Migration
             $table->foreign('maestroclientes_id')->references('id')->on('maestroclientes');
 
             $table->integer('estadocliente_id')->unsigned();
-            $table->foreign('estadocliente_id')->references('id')->on('estadoscliente');
+            $table->foreign('estadocliente_id')->references('id')->on('estadosclientes');
 
             $table->timestamps();
         });

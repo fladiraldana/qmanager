@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
-@section('title')
-  Estados empleados
-@endsection
 
-@section('contend')
+@section('content')
     <h1 class="titulos">Estados empleados</h1>
 
     <div class="ContenedorTabla">
