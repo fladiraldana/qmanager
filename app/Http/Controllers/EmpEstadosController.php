@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Request\storeempestados;
+use App\Http\Requests\storeempestados;
 use App\empestados;
 use Illuminate\Contracts\View\Factory;
 
@@ -34,13 +34,14 @@ class EmpEstadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storeempestado $request)
+    public function store(storeempestados $request)
     {
         $empestado = new empestados;
         $empestado -> estado = $request -> get('descripcion');
         $empestado -> save();
 
-          return redirect()->route('empestado.index');
+          return ['created' => true];
+          //return redirect()->route('empestado.index');
     }
 
     /**

@@ -12,23 +12,39 @@
   <table class="tabla">
     <thead >
       <tr>
-        <th>nombre cargo</th>
-        <th>Codigo interno</th>
+        <th class="ContenedorTabla-titulos">ID</th>
+        <th class="ContenedorTabla-titulos">nombre cargo</th>
+        <th class="ContenedorTabla-titulos">Codigo interno</th>
       </tr>
     </thead>
     <tbody>
+      @foreach($cargo as $cargos)
       <tr>
-        <td></td>
-        <td></td>
+        <td>{{$cargos -> id}}</td>
+        <td>{{$cargos -> nomcargo}}</td>
+        <td>{{$cargos -> codinterno}}</td>
       </tr>
+      @endforeach
     </tbody>
   </table>
 </div>
 
+<div class="contenedor-modal" id="contenedor-modal">
+    <form class="forma-form" action="{{route('cargos.store')}}" method="post">
+        <div class=".contenedor-modalt__cerrar">
+          <a class="contenedor-modal__cerrar" id="cerrar-modal" onclick="cerrarModal()">X</a>
+        </div>
+        {{csrf_field()}}
+        @include('formularios.cargos.cargospartials')
+        <input class="forma-form__boton" type="submit" name="" value="Insertar">
+    </form>
+</div>
+
+
 <div class="ContenedorCrud">
-  <a href="#" class="crud">Insertar</a>
-  <a href="#" class="crud">Editar</a>
-  <a href="#" class="crud">Borrar</a>
+  <a class="crud" id="abrir-modal" onclick="abrirModal()">Crear</a>
+  <a class="crud">Editar</a>
+  <a class="crud">Borrar Tabla</a>
 </div>
 
 @endsection

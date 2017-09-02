@@ -24,15 +24,6 @@ class CiudadesController extends Controller
         return view('formularios.ciudades.ciudadesindex', compact('ciudad', 'departamento'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('formularios.paises.paisescrear');
-    }
 
     /**
      * Store a newly created resource in storage.

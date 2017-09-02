@@ -10,8 +10,8 @@
       <table class="tabla">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Proceso</th>
+            <th class="ContenedorTabla-titulos">Id</th>
+            <th class="ContenedorTabla-titulos">Proceso</th>
           </tr>
         </thead>
         <tbody>
@@ -26,18 +26,21 @@
       </table>
     </div>
 
+    <div class="contenedor-modal" id="contenedor-modal">
     <form class="forma-form" action="{{route('procesos.store')}}" method="post">
-
+        <div class=".contenedor-modalt__cerrar">
+          <a class="contenedor-modal__cerrar" id="cerrar-modal" onclick="cerrarModal()">X</a>
+        </div>
         {{csrf_field()}}
-
         @include('formularios.Procesos.procesospartials')
-
         <button class="crud" type="submit">Insertar</button>
+    </form>
+    </div>
 
     <div class="ContenedorCrud">
-      <a href="#" class="crud">Insertar</a>
-      <a href="#" class="crud">Editar</a>
-      <a href="#" class="crud">Borrar</a>
+      <a class="crud" id="abrir-modal" onclick="abrirModal()">Crear</a>
+      <a class="crud">Editar</a>
+      <a class="crud">Borrar Tabla</a>
     </div>
 
 @endsection

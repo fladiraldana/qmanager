@@ -1,20 +1,17 @@
 
 
-<div class="form-group {{ $errors->has('codigo') ? 'has-error' : '' }}">
 
-    <label for="codigo">Codigo</label>
-      <input type="text" required class="form-control" name="codigo" id="codigo" placeholder="Codigo DIAN del ciudad" value="{{old('codigo')}}">
+    <label for="codigo" class="forma-form__label">Codigo</label>
+      <input type="text" required class="forma-form__input" name="codigo" id="codigo" placeholder="Codigo DIAN de la ciudad" value="{{old('codigo')}}">
 
         @if($errors->has('codigo'))
             <span class="help-block">
                   <strong>{{$errors->first('codigo')}}</strong>
              </span>
         @endif
-</div>
-<div class="form-group{{$errors->has('descripcion') ? 'has-error' : ''}}">
 
-    <label for="descripcion">Descripcion</label>
-    <input type="text" required class="form-control" name="descripcion" id="descripcion" placeholder="Nombre departamento" value="{{old('descripcion')}}">
+    <label for="descripcion" class="forma-form__label">Descripcion</label>
+    <input type="text" required class="forma-form__input" name="descripcion" id="descripcion" placeholder="Nombre de la ciudad" value="{{old('descripcion')}}">
 
         @if($errors->has('descripcion'))
             <span class="help-block">
@@ -22,12 +19,8 @@
             </span>
         @endif
 
-</div>
-
-<div class="form-group{{$errors->has('description') ? 'has-error' : ''}}">
-
-  <label for="lista">Departamento:</label>
-  <select class="lista" name="lista" id="lista" required value="{{old('lista')}}">
+  <label for="lista" class="forma-form__label">Departamento:</label>
+  <select class="forma-form__input" name="lista" id="lista" required value="{{old('lista')}}">
         <option Default="">Seleccione un departamento</option>
         @foreach($departamento as $departamentos)
             <option value = "{{$departamentos -> id}}"> {{$departamentos -> nomdepart}} </option>
@@ -38,4 +31,3 @@
               <strong>{{$errors->first('lista')}}</strong>
           </span>
       @endif
-</div>

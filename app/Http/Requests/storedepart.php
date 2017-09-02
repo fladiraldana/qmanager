@@ -26,7 +26,7 @@ class storedepart extends FormRequest
         return [
             'codigo'      => 'required|min:2|unique:paises,codpais',
             'descripcion' => 'required|min:3|unique:departamentos,nomdepart',
-            'lista'        => 'required'
+            'lista'       => 'required'
         ];
     }
 }

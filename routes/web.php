@@ -50,29 +50,29 @@ Route::Group(['prefix' => 'paises'], function()
 
 Route::group(['middleware' => 'auth'], function(){
 
-  Route::resource('paises', 'PaisesController');
+  Route::resource('paises', 'PaisesController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
   Route::post('/masivo_paises', 'PaisesController@masivo_paises')->name('paises.masivo_paises');
 
-  Route::resource('departamentos', 'DepartamentosController');
+  Route::resource('departamentos', 'DepartamentosController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
   Route::post('/masivo_departamentos', 'DepartamentosController@masivo_departamentos')->name('departamentos.masivo_departamentos');
 
-  Route::resource('ciudades', 'CiudadesController');
+  Route::resource('ciudades', 'CiudadesController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
   Route::post('/masivo_ciudades', 'CiudadesController@masivo_ciudades')->name('ciudades.masivo_ciudades');
 
 
-  Route::resource('bases', 'BasesController');
-  Route::resource('cargos', 'CargosController');
-  Route::resource('contactoemp', 'ContactoEmpController');
-  Route::resource('erroresrecurrentes', 'ErroresRecurrentesController');
-  Route::resource('estadocliente', 'EstadoClienteController');
-  Route::resource('empestados', 'EmpEstadosController');
-  Route::resource('maestroclientes', 'MaestroClientesController');
-  Route::resource('maestroempleados', 'MaestroEmpleadosController');
-  Route::resource('modalidadesemp', 'ModalidadesEmpController');
-  Route::resource('procesos', 'ProcesosController');
-  Route::resource('revisionpross', 'RevisionProssController');
-  Route::resource('succlientes', 'SucClientesController');
-  Route::resource('users', 'UserController');
+  Route::resource('bases', 'BasesController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('cargos', 'CargosController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('contactoemp', 'ContactoEmpController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('erroresrecurrentes', 'ErroresRecurrentesController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('estadocliente', 'EstadoClienteController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('empestados', 'EmpEstadosController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('maestroclientes', 'MaestroClientesController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('maestroempleados', 'MaestroEmpleadosController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('modalidadesemp', 'ModalidadesEmpController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('procesos', 'ProcesosController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('revisionpross', 'RevisionProssController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('succlientes', 'SucClientesController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+  Route::resource('users', 'UserController',['only' => ['index', 'store', 'update', 'destroy', 'show']]);
 
 
 

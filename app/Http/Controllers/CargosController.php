@@ -42,9 +42,11 @@ class CargosController extends Controller
     public function store(storecargo $request)
     {
         $cargo = new Cargos;
-        $cargo -> nomcargo -> $request -> get('nombre');
-        $cargo -> codinterno -> $request -> get('codinterno');
+        $cargo -> nomcargo = $request -> get('nombre');
+        $cargo -> codinterno = $request -> get('codinterno');
         $cargo -> save();
+
+        return redirect()->route('cargos.index');    
     }
 
     /**

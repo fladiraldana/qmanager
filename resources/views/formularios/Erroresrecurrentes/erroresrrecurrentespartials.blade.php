@@ -12,7 +12,7 @@
 
 
   <label for="errortip" class="forma-form__label">Error:</label>
-  <input type="text" class="forma-form__input" id="errortip" name="errortip" placeholder="" value="{{old('errortip')}}" required>
+  <input type="text" class="forma-form__input" id="errortip" name="errortip" placeholder="" value="{{old('errortip')}}" required onchange="mayus()">
 
   @if($errors->has('errortip'))
       <span class="help-block">

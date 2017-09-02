@@ -25,7 +25,7 @@ class storecargo extends FormRequest
     {
         return [
             'nombre'              => 'required|max:100|unique:cargos,nomcargo',
-            'codinterno'          => 'required|max:10|unique:cargos,codinterno'
+            'codinterno'          => 'max:10|unique:cargos,codinterno|nullable'
         ];
     }
 }

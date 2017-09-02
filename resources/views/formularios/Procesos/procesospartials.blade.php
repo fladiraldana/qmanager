@@ -4,7 +4,7 @@
   <input type="text" class="forma-form__input" id="codigo" name="codigo" placeholder="" value="{{old('codigo')}}" disabled>
 
   @if($errors->has('codigo'))
-      <span class="help-block">
+      <span class="forma-form__error">
           <strong>{{$errors->first('codigo')}}</strong>
       </span>
   @endif
@@ -15,7 +15,7 @@
   <input type="text" class="forma-form__input" id="proceso" name="proceso" placeholder="" value="{{old('proceso')}}" required>
 
   @if($errors->has('proceso'))
-      <span class="help-block">
+      <span class="forma-form__error">
           <strong>{{$errors->first('proceso')}}</strong>
       </span>
   @endif

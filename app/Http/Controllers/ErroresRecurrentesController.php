@@ -29,7 +29,7 @@ class ErroresRecurrentesController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,6 +45,9 @@ class ErroresRecurrentesController extends Controller
         $errorrec -> proceso_id       = $request -> get('proceso');
         $errorrec ->  save();
 
+        //ErroresRecurrentes::create($request->all());
+        return ['created' => true];
+
         return redirect()->route('erroresrecurrentes.index');
 
     }
@@ -57,7 +60,7 @@ class ErroresRecurrentesController extends Controller
      */
     public function show($id)
     {
-        //
+        return ErroresRecurrentes::find($id);
     }
 
     /**
@@ -78,9 +81,13 @@ class ErroresRecurrentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(storeerroresrec $request, $id)
     {
-        //
+        $errorrec = ErroresRecurrentes::find($id);
+        $errorrec -> errorrecurrente  = $request -> get('errortip');
+        $errorrec -> proceso_id       = $request -> get('proceso');
+        $errorrec -> update();
+        return['update' => true];
     }
 
     /**
@@ -91,6 +98,7 @@ class ErroresRecurrentesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ErroresRecurrentes::destroy($id);
+        return ['deleted' => true];
     }
 }

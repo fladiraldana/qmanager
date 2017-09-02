@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Request\storeestadocliente;
+use App\Http\Requests\storeestadocliente;
 use App\EstadoCliente;
 use Illuminate\Contracts\View\Factory;
 
@@ -9,11 +9,6 @@ use Illuminate\Contracts\View\Factory;
 
 class EstadoClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $estadoc = EstadoCliente::all();
@@ -42,6 +37,8 @@ class EstadoClienteController extends Controller
         $estadoc = new EstadoCliente;
         $estadoc -> estado  = $request -> get('descripcion');
         $estadoc -> save();
+
+        return view('formularios.Estadoscliente.estadosclienteindex');
     }
 
     /**

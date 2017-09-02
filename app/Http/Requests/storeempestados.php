@@ -24,7 +24,7 @@ class storeempestados extends FormRequest
     public function rules()
     {
         return [
-            'descripcion'   => 'required|max:100|unique:empestados,estado'
+            'descripcion'  => 'required|min:3|unique:empestados,estado'
         ];
     }
 }

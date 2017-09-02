@@ -9,9 +9,9 @@
         <table class="tabla">
           <thead>
             <tr>
-              <th>Identificador</th>
-              <th>Error</th>
-              <th>Proceso</th>
+              <th class="ContenedorTabla-titulos">Identificador</th>
+              <th class="ContenedorTabla-titulos">Error</th>
+              <th class="ContenedorTabla-titulos">Proceso</th>
             </tr>
           </thead>
           <tbody>
@@ -25,16 +25,19 @@
           </tbody>
         </table>
       </div>
-      <div class="contenedor-modal js_mostrar">
+      <div class="contenedor-modal" id="contenedor-modal">
           <form class="forma-form" action="{{route('erroresrecurrentes.store')}}" method="post">
-          {{csrf_field()}}
-          @include('formularios.Erroresrecurrentes.erroresrrecurrentespartials')
-          <input class="forma-form__boton" type="submit" name="" value="Insertar">
+            <div class=".contenedor-modalt__cerrar">
+              <a class="contenedor-modal__cerrar" id="cerrar-modal" onclick="cerrarModal()">X</a>
+            </div>
+            {{csrf_field()}}
+            @include('formularios.Erroresrecurrentes.erroresrrecurrentespartials')
+            <input class="forma-form__boton" type="submit" name="" value="Insertar">
           </form>
       </div>
 
       <div class="ContenedorCrud">
-        <a  class="crud" id="nuevo-modal" onclick="abrirModal">Nuevo</a>
+        <a  class="crud" id="abrir-modal" onclick="abrirModal()">Nuevo</a>
         <a  class="crud">Editar</a>
         <a  class="crud">Borrar</a>
       </div>
